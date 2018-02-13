@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/git/analyzer'
+require_relative '../lib/git_analyzer'
 
 
-puts Git::Analyzer.contributors
+puts GitAnalyzer.contributors

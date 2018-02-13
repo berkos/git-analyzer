@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "git/analyzer/version"
+require "git_analyzer/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "git-analyzer"
-  spec.version       = Git::Analyzer::VERSION
+  spec.version       = GitAnalyzer::VERSION
   spec.authors       = ["Antonis Berkakis"]
   spec.email         = ["aberkakis@gmail.com"]
 

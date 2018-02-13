@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-RSpec.describe Git::Analyzer do
+RSpec.describe GitAnalyzer do
   describe '.contributors' do
     subject { described_class.contributors(period: period) }
 

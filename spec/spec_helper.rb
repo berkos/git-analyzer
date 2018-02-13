@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "git/analyzer"
+require "git_analyzer"
 require 'timecop'
 
 RSpec.configure do |config|
