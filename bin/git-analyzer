@@ -1,6 +1,37 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/git_analyzer'
+require 'optparse'
 
 
-GitAnalyzer::Formatter::Pretty.write GitAnalyzer.contributors
+options = { format: 'pretty' }
+OptionParser.new do |opts|
+  opts.banner = <<~HEREDOC
+    Usage: #{__FILE__} [options]
+
+  HEREDOC
+
+  opts.on("-f FORMAT", "--format FORMAT", /^pretty|csv$/, "You can request either 'pretty' format for terminal or `csv` format to output to 'contributors.csv' (overwrite if present)") do |format|
+    options[:format] = format
+  end
+
+  opts.on("-p PERIOD", "--period PERIOD", /^last_week|last_month$/) do |period|
+    options[:period] = period.to_sym
+  end
+
+  opts.on_tail("-h", "--help", "--usage", "Show this usage message and quit.") do |setting|
+    puts opts.help
+    exit
+  end
+
+  opts.on_tail("-v", "--version", "Show version information about this program and quit.") do
+    puts "Git Analyzer v#{GitAnalyzer::VERSION}"
+    exit
+  end
+end.parse!
+
+
+formatter = options[:format] == 'csv' ? GitAnalyzer::Formatter::CSV : GitAnalyzer::Formatter::Pretty
+
+
+formatter.write(GitAnalyzer.contributors(period: options[:period]))

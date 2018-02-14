@@ -11,6 +11,10 @@ module GitAnalyzer
       since = generate_since_day(period)
 
       result = `git shortlog -sne#{" --since='#{since}'" unless period.nil?}`
+
+      # No commits
+      return [] if result == ""
+
       result = result.scan(/(\d+)\t(.+)\<(.+)\>/)
       total_commits = result.inject(0) { |sum, el| sum + el[0].to_i }
 

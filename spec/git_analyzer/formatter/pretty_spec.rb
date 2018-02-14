@@ -20,5 +20,13 @@ RSpec.describe GitAnalyzer::Formatter::Pretty do
     it 'prints the correct output' do
       expect { subject }.to output(expected_output).to_stdout
     end
+
+    context 'when data is empty' do
+      let(:data) { [] }
+
+      it 'prints "No Commits found"' do
+        expect { subject }.to output("No Commits found\n").to_stdout
+      end
+    end
   end
 end

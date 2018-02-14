@@ -1,7 +1,6 @@
 RSpec.describe GitAnalyzer::Formatter::CSV do
   describe '.write' do
     subject { described_class.write(data) }
-    let(:expected_csv) { IO.read('spec/support/data/sample.csv') }
     let(:data) do
       [
         { cl_1: 'A', cl_2: 'B', cl_3: 'C' },
@@ -22,7 +21,17 @@ RSpec.describe GitAnalyzer::Formatter::CSV do
     it 'writes a csv in the correct format' do
       subject
 
-      expect(IO.read(described_class::FILE_NAME)).to eq(expected_csv)
+      expect(IO.read(described_class::FILE_NAME)).to eq("cl_1,cl_2,cl_3\nA,B,C\nD,E,F\n")
+    end
+
+    context 'when data is empty' do
+      let(:data) { [] }
+
+      it 'writes on the csv that no commits found' do
+        subject
+
+        expect(IO.read(described_class::FILE_NAME)).to eq("No commits found\n")
+      end
     end
   end
 end

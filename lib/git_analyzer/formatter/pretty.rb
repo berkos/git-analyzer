@@ -6,6 +6,8 @@ module GitAnalyzer
 
       class << self
         def write(data)
+          return puts "No Commits found" if data.empty?
+
           top_commiter_commits = data.first[:commits]
 
           output = []

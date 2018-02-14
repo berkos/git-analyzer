@@ -8,9 +8,13 @@ module GitAnalyzer
       class << self
         def write(data)
           ::CSV.open(FILE_NAME, 'wb') do |csv|
-            csv << data.first.keys # adds the attributes name on the first line
-            data.each do |hash|
-              csv << hash.values
+            if data.empty?
+              csv << ['No commits found']
+            else
+              csv << data.first.keys # adds the attributes name on the first line
+              data.each do |hash|
+                csv << hash.values
+              end
             end
           end
         end
