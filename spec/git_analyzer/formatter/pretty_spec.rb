@@ -11,8 +11,8 @@ RSpec.describe GitAnalyzer::Formatter::Pretty do
 
     let(:expected_output) do
       <<~HEREDOC
-        ████████████████████████████████████████████████████████████████████████ John smith -> 749 commits (91.11% contribution)
-        ██████ Angela Fine -> 69 commits (8.39% contribution)
+        ████████████████████████████████████████████████████████████████████████████████ John smith -> 749 commits (91.11% contribution)
+        ███████ Angela Fine -> 69 commits (8.39% contribution)
          Marcus Kruz -> 4 commits (0.48% contribution)
       HEREDOC
     end

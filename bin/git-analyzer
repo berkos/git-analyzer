@@ -3,4 +3,4 @@
 require_relative '../lib/git_analyzer'
 
 
-GitAnalyzer::Formatter::CSV.write GitAnalyzer.contributors
+GitAnalyzer::Formatter::Pretty.write GitAnalyzer.contributors

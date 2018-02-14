@@ -1,4 +1,7 @@
-Dir[File.expand_path 'lib/**/*.rb'].each { |file| require_relative(file) }
+require_relative 'git_analyzer/formatter/csv'
+require_relative 'git_analyzer/formatter/pretty'
+require_relative 'git_analyzer/version'
+
 require 'date'
 require 'pry'
 
@@ -9,17 +12,17 @@ module GitAnalyzer
 
       result = `git shortlog -sne#{" --since='#{since}'" unless period.nil?}`
       result = result.scan(/(\d+)\t(.+)\<(.+)\>/)
-      total_commits = result.sum { |array| array.first.to_i }
+      total_commits = result.inject(0) { |sum, el| sum + el[0].to_i }
 
       contributors = result.map do |array|
         {
           commits: array[0].to_i,
-          contribution_percentage: ((array.shift.to_f / total_commits) * 100).floor(2),
+          # floor(n) is not available in Ruby < 2.3, multiply by 10000 and then divide by 100 to keep to decimals
+          contribution_percentage: (array.shift.to_f / total_commits * 10_000).floor.to_f / 100,
           name: array.shift.strip,
           email: array.shift
         }
       end
-
     end
 
     private

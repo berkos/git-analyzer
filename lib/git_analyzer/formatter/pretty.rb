@@ -6,9 +6,11 @@ module GitAnalyzer
 
       class << self
         def write(data)
+          top_commiter_commits = data.first[:commits]
+
           output = []
           data.each do |row|
-            output << generate_row(row)
+            output << generate_row(row, top_commiter_commits)
           end
 
           puts output
@@ -16,8 +18,8 @@ module GitAnalyzer
 
         private
 
-        def generate_row(row)
-          "#{CHAR * (row[:contribution_percentage]/100 * BAR_LENGTH)} #{row[:name]||row[:email]} -> #{row[:commits]} commits (#{row[:contribution_percentage]}% contribution)"
+        def generate_row(row, top_commiter_commits)
+          "#{CHAR * ((row[:commits]/top_commiter_commits.to_f) * BAR_LENGTH)} #{row[:name]||row[:email]} -> #{row[:commits]} commits (#{row[:contribution_percentage]}% contribution)"
         end
       end
     end
