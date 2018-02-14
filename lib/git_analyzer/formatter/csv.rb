@@ -1,10 +1,9 @@
 # frozen_string_literal: true
-
 require 'csv'
 
 module GitAnalyzer
   module Formatter
-    class CSV
+    module CSV
       FILE_NAME = 'contributors.csv'
       class << self
         def write(data)
