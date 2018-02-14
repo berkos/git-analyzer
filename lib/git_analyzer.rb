@@ -1,4 +1,4 @@
-require_relative 'git_analyzer/version'
+Dir[File.expand_path 'lib/**/*.rb'].each { |file| require_relative(file) }
 require 'date'
 require 'pry'
 
