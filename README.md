@@ -1,5 +1,7 @@
 # GitAnalyzer
 
+[![Build Status](https://travis-ci.org/berkos/git-analyzer.svg?branch=master)](https://travis-ci.org/berkos/git-analyzer)
+
 Yet another Git Analyzer. It can output to STDOUT or Csv format. Run `git-analyzer --help`` for more
 
 ## Installation
