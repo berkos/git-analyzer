@@ -7,7 +7,7 @@ require 'optparse'
 options = { format: 'pretty' }
 OptionParser.new do |opts|
   opts.banner = <<~HEREDOC
-    Usage: #{__FILE__} [options]
+    Usage: #{File.basename(__FILE__)} [options]
 
   HEREDOC
 

@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/berkos/git-analyzer.svg?branch=master)](https://travis-ci.org/berkos/git-analyzer)
 
-Yet another Git Analyzer. It can output to STDOUT or Csv format. Run `git-analyzer --help`` for more
+Yet another Git Analyzer. It prints all the authors and their contribution in your screen in a nice format on a given period. It can output to STDOUT or CSV format. Run `git-analyzer --help`` for more
 
 ## Installation
 
