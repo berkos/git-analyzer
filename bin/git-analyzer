@@ -11,11 +11,11 @@ OptionParser.new do |opts|
 
   HEREDOC
 
-  opts.on("-f FORMAT", "--format FORMAT", /^pretty|csv$/, "You can request either 'pretty' format for terminal or `csv` format to output to 'contributors.csv' (overwrite if present)") do |format|
+  opts.on("-f FORMAT", "--format FORMAT", /^pretty|csv$/, "You can request either 'pretty' format for terminal or `csv` format to output to 'contributors.csv' (overwrite if present). The deault option is pretty") do |format|
     options[:format] = format
   end
 
-  opts.on("-p PERIOD", "--period PERIOD", /^last_week|last_month$/) do |period|
+  opts.on("-p PERIOD", "--period PERIOD", /^last_week|last_month$/, "If you pass a --period option you can request the commits of last week or last month, if no option is passed it grabs all the commits of the repo.") do |period|
     options[:period] = period.to_sym
   end
 

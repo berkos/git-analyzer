@@ -9,9 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Antonis Berkakis"]
   spec.email         = ["aberkakis@gmail.com"]
 
-  spec.summary       = %q{: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Yet another Git Analyzer. It can output to STDOUT or csv format. Run `git-analyzer --help`` for more."
+  spec.homepage      = "https://github.com/berkos/git-analyzer"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
