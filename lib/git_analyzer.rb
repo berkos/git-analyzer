@@ -18,7 +18,7 @@ module GitAnalyzer
       result = result.scan(/(\d+)\t(.+)\<(.+)\>/)
       total_commits = result.inject(0) { |sum, el| sum + el[0].to_i }
 
-      contributors = result.map do |array|
+      result.map do |array|
         {
           commits: array[0].to_i,
           # floor(n) is not available in Ruby < 2.3, multiply by 10000 and then divide by 100 to keep to decimals

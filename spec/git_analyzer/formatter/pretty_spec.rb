@@ -11,21 +11,22 @@ RSpec.describe GitAnalyzer::Formatter::Pretty do
 
     let(:expected_output) do
       <<~HEREDOC
-        ████████████████████████████████████████████████████████████████████████████████ John smith -> 749 commits (91.11% contribution)
-        ███████ Angela Fine -> 69 commits (8.39% contribution)
-         Marcus Kruz -> 4 commits (0.48% contribution)
+        \e[32m████████████████████████████████████████████████████████████████████████████████\e[0m John smith (\e[34mjohn@smith.com \e[0m) -> \e[31m749\e[0m commits (91.11% contribution)
+        \e[32m███████\e[0m Angela Fine (\e[34mangela@fine.com\e[0m) -> \e[31m69\e[0m commits (8.39% contribution)
+        \e[32m\e[0m Marcus Kruz (\e[34mmarcus@kruz.com\e[0m) -> \e[31m4\e[0m commits (0.48% contribution)
       HEREDOC
     end
 
     it 'prints the correct output' do
       expect { subject }.to output(expected_output).to_stdout
+      # subject
     end
 
     context 'when data is empty' do
       let(:data) { [] }
 
       it 'prints "No Commits found"' do
-        expect { subject }.to output("No Commits found\n").to_stdout
+        expect { subject }.to output("\e[31mNo Commits found\e[0m\n").to_stdout
       end
     end
   end
